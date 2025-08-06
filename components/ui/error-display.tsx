@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, Copy, RefreshCw } from "lucide-react";
+import { AlertTriangle, Copy, RefreshCw, RotateCcw } from "lucide-react";
 import { toast } from "react-hot-toast";
 
 interface ErrorDisplayProps {
@@ -32,7 +32,7 @@ export function ErrorDisplay({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-destructive">
           <AlertTriangle className="h-5 w-5" />
-          Something went wrong
+          Error
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -50,7 +50,8 @@ export function ErrorDisplay({
 
           {onReset && (
             <Button onClick={onReset} variant="outline" size="sm">
-              Start Over
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Reset
             </Button>
           )}
 

@@ -21,6 +21,7 @@ import {
   FileType,
   Hash,
   List,
+  RotateCcw,
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
@@ -219,6 +220,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               size="sm"
               className="shrink-0"
             >
+              <RotateCcw className="h-4 w-4 mr-2" />
               Process Another File
             </Button>
           </div>

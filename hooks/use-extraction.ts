@@ -55,6 +55,9 @@ export function useExtraction() {
 
       if (mode === "fields" && fields) {
         formData.append("fields", JSON.stringify(fields));
+        if (description?.trim()) {
+          formData.append("description", description.trim());
+        }
       } else if (mode === "description" && description) {
         formData.append("description", description);
       }

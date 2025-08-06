@@ -48,6 +48,14 @@ export default function HomePage() {
 
   const resetAll = () => {
     reset();
+    // Keep the file, just reset other states
+    setFields([]);
+    setDescription("");
+    setShowAdditionalContext(false);
+  };
+
+  const resetAllIncludingFile = () => {
+    reset();
     setFile(null);
     setFields([]);
     setDescription("");
@@ -57,7 +65,7 @@ export default function HomePage() {
   // Show loading state during processing
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-mesh dark:bg-gradient-mesh-dark">
+      <div className="min-h-screen bg-gradient-mesh-dynamic">
         <div className="container mx-auto px-4 py-8">
           <LoadingState
             message="Extracting data from your document..."
@@ -72,9 +80,9 @@ export default function HomePage() {
   // Show results if we have them
   if (result) {
     return (
-      <div className="min-h-screen bg-gradient-mesh dark:bg-gradient-mesh-dark">
+      <div className="min-h-screen bg-gradient-mesh-dynamic">
         <div className="container mx-auto px-4 py-8">
-          <ResultsDisplay result={result} onReset={resetAll} />
+          <ResultsDisplay result={result} onReset={resetAllIncludingFile} />
         </div>
         <Toaster position="top-right" />
       </div>
@@ -82,7 +90,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-mesh dark:bg-gradient-mesh-dark">
+    <div className="min-h-screen bg-gradient-mesh-dynamic">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -296,19 +304,21 @@ export default function HomePage() {
                       )}
                     </Button>
                   </div>
+
+                  {/* Error Display - right after extraction settings */}
+                  {error && (
+                    <div className="mt-6">
+                      <ErrorDisplay
+                        error={error}
+                        onReset={resetAll}
+                        onRetry={() => handleExtract()}
+                      />
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
           </div>
-
-          {/* Error Display */}
-          {error && (
-            <ErrorDisplay
-              error={error}
-              onReset={resetAll}
-              onRetry={() => handleExtract()}
-            />
-          )}
         </div>
       </div>
 

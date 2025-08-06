@@ -45,6 +45,28 @@
 
   --background: var(--base-50);
   --foreground: var(--base-800);
+  --gradient-mesh:
+    radial-gradient(
+      circle at 25% 25%,
+      oklch(0.96 0.05 240) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      oklch(0.95 0.06 180) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      oklch(0.97 0.04 300) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 25% 75%,
+      oklch(0.96 0.05 120) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, oklch(0.98 0.02 200), oklch(0.99 0.01 220));
   --card: var(--color-white);
   --card-foreground: var(--base-800);
   --popover: var(--color-white);
@@ -80,6 +102,24 @@
 .dark {
   --background: var(--base-950);
   --foreground: var(--base-200);
+  --gradient-mesh:
+    radial-gradient(circle at 25% 25%, oklch(0.2 0.08 240) 0%, transparent 50%),
+    radial-gradient(
+      circle at 75% 75%,
+      oklch(0.18 0.09 180) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      oklch(0.22 0.07 300) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 25% 75%,
+      oklch(0.19 0.08 120) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, oklch(0.14 0.04 200), oklch(0.16 0.03 220));
   --card: var(--base-900);
   --card-foreground: var(--base-200);
   --popover: var(--base-900);
@@ -182,6 +222,7 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-gradient-mesh: var(--gradient-mesh);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -216,76 +257,8 @@
 
 /* Custom gradient backgrounds */
 @layer utilities {
-  .bg-gradient-aurora {
-    background: linear-gradient(
-      135deg,
-      oklch(0.98 0.02 180) 0%,
-      oklch(0.96 0.04 200) 25%,
-      oklch(0.95 0.06 220) 50%,
-      oklch(0.97 0.03 240) 75%,
-      oklch(0.99 0.01 260) 100%
-    );
-  }
-
-  .bg-gradient-aurora-dark {
-    background: linear-gradient(
-      135deg,
-      oklch(0.15 0.03 240) 0%,
-      oklch(0.12 0.04 220) 25%,
-      oklch(0.1 0.05 200) 50%,
-      oklch(0.13 0.04 180) 75%,
-      oklch(0.16 0.02 160) 100%
-    );
-  }
-
-  .bg-gradient-mesh {
-    background:
-      radial-gradient(
-        circle at 25% 25%,
-        oklch(0.96 0.05 240) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 75% 75%,
-        oklch(0.95 0.06 180) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 75% 25%,
-        oklch(0.97 0.04 300) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 25% 75%,
-        oklch(0.96 0.05 120) 0%,
-        transparent 50%
-      ),
-      linear-gradient(135deg, oklch(0.98 0.02 200), oklch(0.99 0.01 220));
-  }
-
-  .bg-gradient-mesh-dark {
-    background:
-      radial-gradient(
-        circle at 25% 25%,
-        oklch(0.2 0.08 240) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 75% 75%,
-        oklch(0.18 0.09 180) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 75% 25%,
-        oklch(0.22 0.07 300) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 25% 75%,
-        oklch(0.19 0.08 120) 0%,
-        transparent 50%
-      ),
-      linear-gradient(135deg, oklch(0.14 0.04 200), oklch(0.16 0.03 220));
+  .bg-gradient-mesh-dynamic {
+    background: var(--gradient-mesh);
   }
 
   .text-gradient {

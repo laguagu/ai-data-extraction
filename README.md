@@ -1,6 +1,6 @@
-# PDF Data Extraction Agent
+# AI Data Extraction
 
-AI-powered document data extraction using OpenAI GPT-4 and Vercel AI SDK.
+A powerful Next.js application for extracting structured data from PDF documents using AI. Define custom fields, use templates, or let AI generate fields automatically.
 
 ## 💡 How It Works
 
@@ -24,7 +24,23 @@ The application offers three different methods for data extraction:
 - **Custom Field Definitions**: Define exactly what data to extract with type validation
 - **Pre-built Templates**: Ready-made schemas for common document types
 - **PDF Support**: Extract data from PDF documents up to 50MB
-- **Professional UI**: OriginUI-based drag & drop interface with animations
+- **Professional UI**: Modern drag & drop interface with animations
+
+## 📸 Screenshots
+
+### Main Interface
+
+![Application Interface](./public/screenshots/ss-1.png)
+
+_Drag & drop PDF upload interface with field definition panel_
+
+### Results & Processing
+
+![Results Display](./public/screenshots/ss-2.png)
+
+_Structured data extraction results with clean output formatting_
+
+> **Note**: Screenshots show the application in action. Upload a PDF, define fields, and extract structured data with AI-powered processing.
 
 ## 🛠️ Tech Stack
 
@@ -32,7 +48,7 @@ The application offers three different methods for data extraction:
 - **Vercel AI SDK** with `generateObject` for structured AI responses
 - **OpenAI GPT-4** for intelligent text analysis
 - **Zod** for schema validation and type safety
-- **Shadcn/ui + OriginUI** for modern UI components
+- **Shadcn/ui** for modern UI components
 - **Framer Motion** for smooth animations
 
 ## 🚀 Quick Start
@@ -60,7 +76,7 @@ pnpm dev
 
 Visit `http://localhost:3000`
 
-## � How It Works
+## 📝 How It Works
 
 1. **Upload PDF**: Drag & drop or click to select a PDF document
 2. **Define Fields**: Create custom fields or use pre-built templates
@@ -87,11 +103,13 @@ const result = await generateObject({
 │   │   └── generate-fields/route.ts # AI field generation endpoint
 │   └── page.tsx                    # Main application
 ├── components/
-│   ├── document-uploader.tsx       # OriginUI file upload
+│   ├── document-uploader.tsx       # File upload component
 │   ├── field-builder.tsx          # Dynamic field creation
 │   └── results-display.tsx        # Data visualization
-└── hooks/
-    └── use-extraction.ts           # Extraction logic
+├── hooks/
+│   └── use-extraction.ts           # Extraction logic
+└── lib/
+    └── langchain-pdf-parser.ts     # PDF processing with LangChain
 ```
 
 ## 🔧 Key Features
@@ -101,6 +119,7 @@ const result = await generateObject({
 - **Export Options**: JSON, CSV, or copy to clipboard
 - **Error Handling**: Comprehensive validation and user feedback
 - **Responsive Design**: Works on desktop and mobile
+- **PDF Processing**: Robust parsing with fallback to OCR for image-based PDFs
 
 ## 📄 License
 

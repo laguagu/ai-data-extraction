@@ -68,6 +68,8 @@ export function FieldBuilder({ fields, onFieldsChange }: FieldBuilderProps) {
   });
 
   const selectedType = watch("type");
+  const isRequired = watch("required");
+  const selectedItemType = watch("itemType");
 
   const onAddField = (data: FieldFormData) => {
     const newField: FieldType = {
@@ -261,6 +263,7 @@ export function FieldBuilder({ fields, onFieldsChange }: FieldBuilderProps) {
                   <div>
                     <Label htmlFor="itemType">Array Item Type</Label>
                     <Select
+                      value={selectedItemType}
                       onValueChange={(value) =>
                         setValue("itemType", value as "text" | "number")
                       }
@@ -289,6 +292,7 @@ export function FieldBuilder({ fields, onFieldsChange }: FieldBuilderProps) {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="required"
+                    checked={isRequired}
                     onCheckedChange={(checked) =>
                       setValue("required", checked as boolean)
                     }
